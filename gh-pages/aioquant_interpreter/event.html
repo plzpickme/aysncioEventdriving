@@ -1,0 +1,787 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>第五节 event · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="tasks.html" />
+    
+    
+    <link rel="prev" href="market.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    INTRODUCTION
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../Asynchronous_event_driven.html">
+            
+                <a href="../Asynchronous_event_driven.html">
+            
+                    
+                    chapter1 异步事件驱动框架
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../aioquant_interperter.html">
+            
+                <a href="../aioquant_interperter.html">
+            
+                    
+                    chapter2 异步事件驱动数字货币交易系统aioquant源码解析
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="main.html">
+            
+                <a href="main.html">
+            
+                    
+                    第一节 main 
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="quant.html">
+            
+                <a href="quant.html">
+            
+                    
+                    第二节 quant 
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="heartbeat.html">
+            
+                <a href="heartbeat.html">
+            
+                    
+                    第三节 heartbeat
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="market.html">
+            
+                <a href="market.html">
+            
+                    
+                    第四节 market
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.3.5" data-path="event.html">
+            
+                <a href="event.html">
+            
+                    
+                    第五节 event
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.6" data-path="tasks.html">
+            
+                <a href="tasks.html">
+            
+                    
+                    第六节 tasks
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >第五节 event</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#x7B2C;&#x4E94;&#x8282;-event">&#x7B2C;&#x4E94;&#x8282; event</h1>
+<p>event&#x6A21;&#x5757;&#x662F;&#x7406;&#x89E3;&#x4E8B;&#x4EF6;&#x9A71;&#x52A8;&#x6700;&#x6838;&#x5FC3;&#x7684;&#x6A21;&#x5757;&#xFF0C;&#x5176;&#x4E2D;event&#x7C7B;&#x548C;eventcenter&#x7C7B;&#x662F;&#x6700;&#x6838;&#x5FC3;&#x7684;&#x4E24;&#x4E2A;&#x7C7B;&#x3002;</p>
+<pre><code class="lang-python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Event</span>:</span>
+    <span class="hljs-string">&quot;&quot;&quot;Event base.
+
+    Attributes:
+        name: Event name.
+        exchange: Exchange name.
+        queue: Queue name.
+        routing_key: Routing key name.
+        pre_fetch_count: How may message per fetched, default is `1`.
+        data: Message content.
+    &quot;&quot;&quot;</span>
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, name=None, exchange=None, queue=None, routing_key=None, pre_fetch_count=<span class="hljs-number">1</span>, data=None)</span>:</span>
+        <span class="hljs-string">&quot;&quot;&quot;Initialize.&quot;&quot;&quot;</span>
+        self._name = name
+        self._exchange = exchange
+        self._queue = queue
+        self._routing_key = routing_key
+        self._pre_fetch_count = pre_fetch_count
+        self._data = data
+        self._callback = <span class="hljs-keyword">None</span>  <span class="hljs-comment"># Asynchronous callback function.</span>
+
+<span class="hljs-meta">    @property</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">name</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-keyword">return</span> self._name
+
+<span class="hljs-meta">    @property</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">exchange</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-keyword">return</span> self._exchange
+
+<span class="hljs-meta">    @property</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">queue</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-keyword">return</span> self._queue
+
+<span class="hljs-meta">    @property</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">routing_key</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-keyword">return</span> self._routing_key
+
+<span class="hljs-meta">    @property</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">prefetch_count</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-keyword">return</span> self._pre_fetch_count
+
+<span class="hljs-meta">    @property</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">data</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-keyword">return</span> self._data
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">dumps</span><span class="hljs-params">(self)</span>:</span>
+        d = {
+            <span class="hljs-string">&quot;n&quot;</span>: self.name,
+            <span class="hljs-string">&quot;d&quot;</span>: self.data
+        }
+        s = json.dumps(d)
+        b = zlib.compress(s.encode(<span class="hljs-string">&quot;utf8&quot;</span>))
+        <span class="hljs-keyword">return</span> b
+    <span class="hljs-comment">#&#x538B;&#x7F29; name &#x548C; data</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">loads</span><span class="hljs-params">(self, b)</span>:</span>
+        b = zlib.decompress(b)
+        d = json.loads(b.decode(<span class="hljs-string">&quot;utf8&quot;</span>))
+        self._name = d.get(<span class="hljs-string">&quot;n&quot;</span>)
+        self._data = d.get(<span class="hljs-string">&quot;d&quot;</span>)
+        <span class="hljs-keyword">return</span> d
+    <span class="hljs-comment">#&#x89E3;&#x538B; name &#x548C; data</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">parse</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-keyword">raise</span> <span class="hljs-built_in">NotImplemented</span>
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">subscribe</span><span class="hljs-params">(self, callback, multi=False)</span>:</span>
+        <span class="hljs-string">&quot;&quot;&quot;Subscribe a event.
+
+        Args:
+            callback: Asynchronous callback function.
+            multi: If subscribe multiple channels?
+        &quot;&quot;&quot;</span>
+        <span class="hljs-keyword">from</span> aioquant <span class="hljs-keyword">import</span> quant
+        self._callback = callback
+        SingleTask.run(quant.event_center.subscribe, self, self.callback, multi)
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">publish</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-string">&quot;&quot;&quot;Publish a event.&quot;&quot;&quot;</span>
+        <span class="hljs-keyword">from</span> aioquant <span class="hljs-keyword">import</span> quant
+        SingleTask.run(quant.event_center.publish, self)
+
+    <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">callback</span><span class="hljs-params">(self, channel, body, envelope, properties)</span>:</span>
+        self._exchange = envelope.exchange_name
+        self._routing_key = envelope.routing_key
+        self.loads(body)
+        o = self.parse()
+        <span class="hljs-keyword">await</span> self._callback(o)
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__str__</span><span class="hljs-params">(self)</span>:</span>
+        info = <span class="hljs-string">&quot;EVENT: name={n}, exchange={e}, queue={q}, routing_key={r}, data={d}&quot;</span>.format(
+            e=self.exchange, q=self.queue, r=self.routing_key, n=self.name, d=self.data)
+        <span class="hljs-keyword">return</span> info
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__repr__</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-keyword">return</span> str(self)
+</code></pre>
+<p>&#x6211;&#x4EEC;&#x5C06;event&#x7C7B;&#x4E2D;&#x7684;&#x7EF4;&#x62A4;&#x5B57;&#x6BB5;&#x4E00;&#x4E00;&#x89E3;&#x6790;</p>
+<pre><code class="lang-python">                self._name = name
+        self._exchange = exchange
+        self._queue = queue
+        self._routing_key = routing_key
+        self._pre_fetch_count = pre_fetch_count
+        self._data = data
+        self._callback = <span class="hljs-keyword">None</span>  <span class="hljs-comment"># Asynchronous callback function.</span>
+</code></pre>
+<p>name&#x4E3A;&#x4E8B;&#x4EF6;&#x7684;&#x547D;&#x540D;&#xFF0C;exchange&#x4E3A;&#x8BE5;event&#x5E94;&#x8BE5;&#x5206;&#x5C5E;&#x7684;&#x4EA4;&#x6362;&#x673A;&#xFF0C;&#x901A;&#x5E38;&#x60C5;&#x51B5;&#x4E0B;&#x6839;&#x636E;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x786E;&#x5B9A;&#xFF0C;orderbookEvent&#x5206;&#x5C5E;orderbook&#x4EA4;&#x6362;&#x673A;&#xFF0C;queue&#x901A;&#x5E38;&#x60C5;&#x51B5;&#x4E0B;&#x662F;&#x7528;platform&#x52A0;&#x4E0A;symbol&#x8FDB;&#x884C;&#x547D;&#x540D;&#xFF0C;routing_key&#x662F;&#x7528;severid+platform+symbol&#x8FDB;&#x884C;&#x547D;&#x540D;&#xFF08;&#x4E0A;&#x9762;&#x5185;&#x5BB9;&#x9700;&#x8981;&#x5BF9;amqp&#x534F;&#x8BAE;&#x4EE5;&#x53CA;rabbitmq&#x6709;&#x4E86;&#x89E3;&#xFF0C;&#x5B89;&#x88C5;&#x597D;rabbitmq&#x4E4B;&#x540E;&#x5728;rabbimq&#x7684;web&#x7BA1;&#x7406;&#x5DE5;&#x5177;&#x4E2D;&#x6709;docs&#x5165;&#x53E3;&#xFF0C;&#x6216;&#x8005;&#x5728;&#x7B2C;&#x4E00;&#x7AE0;&#x4E2D;&#x7684;aioamqp&#x4ECB;&#x7ECD;&#x4E0B;&#x6709;&#x5B98;&#x65B9;&#x6587;&#x6863;&#x5165;&#x53E3;&#xFF09;&#xFF0C;pre_fetch_count&#x662F;&#x6BCF;&#x6B21;&#x83B7;&#x53D6;&#x4E8B;&#x4EF6;&#x6570;&#x91CF;&#x9ED8;&#x8BA4;&#x503C;&#x4E3A;1&#xFF0C;data&#x5B58;&#x50A8;&#x6570;&#x636E;&#xFF0C;callback&#x4E3A;&#x8BE5;&#x4E8B;&#x4EF6;&#x7684;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#xFF0C;event&#x7C7B;&#x4E2D;&#x7EF4;&#x62A4;&#x7684;&#x56DE;&#x8C03;&#x51FD;&#x6570;_callback&#x662F;&#x5BF9;&#x4F20;&#x5165;&#x7684;callback&#x7684;&#x6839;&#x636E;amqp&#x534F;&#x8BAE;&#x7684;&#x6807;&#x51C6;&#x5316;&#x5C01;&#x88C5;&#xFF0C;&#x5373;&#x8BE5;&#x4E8B;&#x4EF6;&#x7684;&#x6D88;&#x8D39;&#x8005;&#x3002;</p>
+<pre><code class="lang-python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">dumps</span><span class="hljs-params">(self)</span>:</span>
+    d = {
+        <span class="hljs-string">&quot;n&quot;</span>: self.name,
+        <span class="hljs-string">&quot;d&quot;</span>: self.data
+    }
+    s = json.dumps(d)
+    b = zlib.compress(s.encode(<span class="hljs-string">&quot;utf8&quot;</span>))
+    <span class="hljs-keyword">return</span> b
+<span class="hljs-comment">#&#x538B;&#x7F29; name &#x548C; data</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">loads</span><span class="hljs-params">(self, b)</span>:</span>
+    b = zlib.decompress(b)
+    d = json.loads(b.decode(<span class="hljs-string">&quot;utf8&quot;</span>))
+    self._name = d.get(<span class="hljs-string">&quot;n&quot;</span>)
+    self._data = d.get(<span class="hljs-string">&quot;d&quot;</span>)
+    <span class="hljs-keyword">return</span> d
+</code></pre>
+<p>dumps&#x662F;&#x5BF9;&#x6570;&#x636E;&#x7684;&#x538B;&#x7F29;&#xFF0C;loads&#x63D0;&#x53D6;&#x538B;&#x7F29;&#x6570;&#x636E;&#x5E76;&#x4E14;&#x66F4;&#x65B0;&#x5F53;&#x524D;&#x8BE5;event&#x6700;&#x65B0;&#x7684;&#x6570;&#x636E;</p>
+<pre><code class="lang-python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">parse</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-keyword">raise</span> <span class="hljs-built_in">NotImplemented</span>
+</code></pre>
+<p>parse&#x51FD;&#x6570;&#x662F;&#x9700;&#x8981;&#x5B50;&#x7C7B;&#x5B9E;&#x73B0;&#x7684;&#x51FD;&#x6570;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x8BFB;&#x53D6;&#x6570;&#x636E;&#x5E76;&#x8FD4;&#x56DE;&#x76F8;&#x5E94;&#x7684;&#x6570;&#x636E;&#x5BF9;&#x8C61;&#xFF0C;&#x6BD4;&#x5982;orderbookEvent&#x4E2D;&#x8FD9;&#x6837;&#x5B9E;&#x73B0;</p>
+<pre><code class="lang-python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">parse</span><span class="hljs-params">(self)</span>:</span>
+    orderbook = Orderbook().load_smart(self.data)
+    <span class="hljs-keyword">return</span> orderbook
+</code></pre>
+<p>&#x5728;event&#x4E2D;&#x6700;&#x91CD;&#x8981;&#x7684;&#x8FD8;&#x662F;&#x5B8C;&#x6210;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x7684;&#x8BA2;&#x9605;&#xFF0C;&#x4EE5;&#x53CA;&#x4E8B;&#x4EF6;&#x7684;&#x53D1;&#x5E03;</p>
+<pre><code class="lang-python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">subscribe</span><span class="hljs-params">(self, callback, multi=False)</span>:</span>
+    <span class="hljs-string">&quot;&quot;&quot;Subscribe a event.
+
+    Args:
+        callback: Asynchronous callback function.
+        multi: If subscribe multiple channels?
+    &quot;&quot;&quot;</span>
+    <span class="hljs-keyword">from</span> aioquant <span class="hljs-keyword">import</span> quant
+    self._callback = callback
+    SingleTask.run(quant.event_center.subscribe, self, self.callback, multi)
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">publish</span><span class="hljs-params">(self)</span>:</span>
+    <span class="hljs-string">&quot;&quot;&quot;Publish a event.&quot;&quot;&quot;</span>
+    <span class="hljs-keyword">from</span> aioquant <span class="hljs-keyword">import</span> quant
+    SingleTask.run(quant.event_center.publish, self)
+</code></pre>
+<p>&#x5728;subscribe&#x4E2D;&#x6211;&#x4EEC;&#x8981;&#x62FF;&#x5230;&#x6211;&#x4EEC;&#x5728;quant&#x6A21;&#x5757;&#x4E2D;&#x521D;&#x59CB;&#x5316;&#x7684;event_center,&#x5E76;&#x8C03;&#x7528;event_center&#x4E2D;&#x7684;subscribe&#x65B9;&#x6CD5;&#xFF0C;&#x5C06;callback&#x8BA2;&#x9605;&#x548C;&#x6D88;&#x8D39;&#x81EA;&#x5DF1;&#x7684;&#x6570;&#x636E;&#x3002;&#x800C;publish&#x65B9;&#x6CD5;&#x5373;&#x662F;&#x5C06;&#x81EA;&#x8EAB;&#x6570;&#x636E;&#x901A;&#x8FC7;event_center&#x53D1;&#x5E03;&#x5230;&#x6D88;&#x606F;&#x961F;&#x5217;&#x4E2D;&#x3002;</p>
+<p>&#x6574;&#x4E2A;&#x5F02;&#x6B65;&#x4E8B;&#x4EF6;&#x9A71;&#x52A8;&#x4EA4;&#x6613;&#x56DE;&#x6D4B;&#x6846;&#x67B6;&#x6700;&#x6838;&#x5FC3;&#x7684;&#x90E8;&#x5206;&#x4FBF;&#x662F;EventCenter&#x7C7B;&#xFF0C;&#x5728;&#x8FD9;&#x5B9E;&#x73B0;&#x4E86;&#x5982;&#x4F55;&#x548C;rabbitmq&#x7684;&#x4EA4;&#x4E92;&#xFF0C;&#x5B9E;&#x73B0;&#x4E86;&#x5BF9;callback&#x51FD;&#x6570;&#x7684;&#x7ED1;&#x5B9A;&#x6D88;&#x8D39;&#x3002;</p>
+<pre><code class="lang-python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">EventCenter</span>:</span>
+    <span class="hljs-string">&quot;&quot;&quot;Event center.
+    &quot;&quot;&quot;</span>
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self)</span>:</span>
+        self._host = config.rabbitmq.get(<span class="hljs-string">&quot;host&quot;</span>, <span class="hljs-string">&quot;localhost&quot;</span>)
+        self._port = config.rabbitmq.get(<span class="hljs-string">&quot;port&quot;</span>, <span class="hljs-number">5672</span>)
+        self._username = config.rabbitmq.get(<span class="hljs-string">&quot;username&quot;</span>, <span class="hljs-string">&quot;guest&quot;</span>)
+        self._password = config.rabbitmq.get(<span class="hljs-string">&quot;password&quot;</span>, <span class="hljs-string">&quot;guest&quot;</span>)
+        self._protocol = <span class="hljs-keyword">None</span>
+        self._channel = <span class="hljs-keyword">None</span>  <span class="hljs-comment"># Connection channel.</span>
+        self._connected = <span class="hljs-keyword">False</span>  <span class="hljs-comment"># If connect success.</span>
+        self._subscribers = []  <span class="hljs-comment"># e.g. `[(event, callback, multi), ...]`</span>
+        self._event_handler = {}  <span class="hljs-comment"># e.g. `{&quot;exchange:routing_key&quot;: [callback_function, ...]}`</span>
+
+        <span class="hljs-comment"># Register a loop run task to check TCP connection&apos;s healthy.</span>
+        LoopRunTask.register(self._check_connection, <span class="hljs-number">10</span>)
+
+        <span class="hljs-comment"># Create MQ connection.</span>
+        asyncio.get_event_loop().run_until_complete(self.connect())
+
+<span class="hljs-meta">    @async_method_locker(&quot;EventCenter.subscribe&quot;)</span>
+    <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">subscribe</span><span class="hljs-params">(self, event: Event, callback=None, multi=False)</span>:</span>
+        <span class="hljs-string">&quot;&quot;&quot;Subscribe a event.
+
+        Args:
+            event: Event type.
+            callback: Asynchronous callback.
+            multi: If subscribe multiple channel(routing_key) ?
+        &quot;&quot;&quot;</span>
+        logger.info(<span class="hljs-string">&quot;NAME:&quot;</span>, event.name, <span class="hljs-string">&quot;EXCHANGE:&quot;</span>, event.exchange, <span class="hljs-string">&quot;QUEUE:&quot;</span>, event.queue, <span class="hljs-string">&quot;ROUTING_KEY:&quot;</span>,
+                    event.routing_key, caller=self)
+        self._subscribers.append((event, callback, multi))
+
+    <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">publish</span><span class="hljs-params">(self, event)</span>:</span>
+        <span class="hljs-string">&quot;&quot;&quot;Publish a event.
+
+        Args:
+            event: A event to publish.
+        &quot;&quot;&quot;</span>
+        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> self._connected:
+            logger.warn(<span class="hljs-string">&quot;RabbitMQ not ready right now!&quot;</span>, caller=self)
+            <span class="hljs-keyword">return</span>
+        data = event.dumps()
+        <span class="hljs-keyword">await</span> self._channel.basic_publish(payload=data, exchange_name=event.exchange, routing_key=event.routing_key)
+
+    <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">connect</span><span class="hljs-params">(self, reconnect=False)</span>:</span>
+        <span class="hljs-string">&quot;&quot;&quot;Connect to RabbitMQ server and create default exchange.
+
+        Args:
+            reconnect: If this invoke is a re-connection ?
+        &quot;&quot;&quot;</span>
+        logger.info(<span class="hljs-string">&quot;host:&quot;</span>, self._host, <span class="hljs-string">&quot;port:&quot;</span>, self._port, caller=self)
+        <span class="hljs-keyword">if</span> self._connected:
+            <span class="hljs-keyword">return</span>
+
+        <span class="hljs-comment"># Create a connection.</span>
+        <span class="hljs-keyword">try</span>:
+            transport, protocol = <span class="hljs-keyword">await</span> aioamqp.connect(host=self._host, port=self._port, login=self._username,
+                                                        password=self._password, login_method=<span class="hljs-string">&quot;PLAIN&quot;</span>)
+        <span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> e:
+            logger.error(<span class="hljs-string">&quot;connection error:&quot;</span>, e, caller=self)
+            <span class="hljs-keyword">return</span>
+        <span class="hljs-keyword">finally</span>:
+            <span class="hljs-keyword">if</span> self._connected:
+                <span class="hljs-keyword">return</span>
+        channel = <span class="hljs-keyword">await</span> protocol.channel()
+        self._protocol = protocol
+        self._channel = channel
+        self._connected = <span class="hljs-keyword">True</span>
+        logger.info(<span class="hljs-string">&quot;Rabbitmq initialize success!&quot;</span>, caller=self)
+
+        <span class="hljs-comment"># Create default exchanges.</span>
+        exchanges = [<span class="hljs-string">&quot;Orderbook&quot;</span>, <span class="hljs-string">&quot;Kline&quot;</span>]
+        <span class="hljs-keyword">for</span> name <span class="hljs-keyword">in</span> exchanges:
+            <span class="hljs-keyword">await</span> self._channel.exchange_declare(exchange_name=name, type_name=<span class="hljs-string">&quot;fanout&quot;</span>)
+        logger.debug(<span class="hljs-string">&quot;create default exchanges success!&quot;</span>, caller=self)
+
+        <span class="hljs-keyword">if</span> reconnect:
+            self._bind_and_consume()
+        <span class="hljs-keyword">else</span>:
+            <span class="hljs-comment"># Maybe we should waiting for all modules to be initialized successfully.</span>
+            asyncio.get_event_loop().call_later(<span class="hljs-number">5</span>, self._bind_and_consume)
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">_bind_and_consume</span><span class="hljs-params">(self)</span>:</span>
+        <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">do_them</span><span class="hljs-params">()</span>:</span>
+            <span class="hljs-keyword">for</span> event, callback, multi <span class="hljs-keyword">in</span> self._subscribers:
+                <span class="hljs-keyword">await</span> self._initialize(event, callback, multi)
+        SingleTask.run(do_them)
+
+    <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">_initialize</span><span class="hljs-params">(self, event: Event, callback=None, multi=False)</span>:</span>
+        <span class="hljs-keyword">if</span> event.queue:
+            <span class="hljs-keyword">await</span> self._channel.queue_declare(queue_name=event.queue, auto_delete=<span class="hljs-keyword">True</span>)
+            queue_name = event.queue
+        <span class="hljs-keyword">else</span>:
+            result = <span class="hljs-keyword">await</span> self._channel.queue_declare(exclusive=<span class="hljs-keyword">True</span>)
+            queue_name = result[<span class="hljs-string">&quot;queue&quot;</span>]
+        <span class="hljs-keyword">await</span> self._channel.queue_bind(queue_name=queue_name, exchange_name=event.exchange,
+                                       routing_key=event.routing_key)
+        <span class="hljs-keyword">await</span> self._channel.basic_qos(prefetch_count=event.prefetch_count)
+        <span class="hljs-keyword">if</span> callback:
+            <span class="hljs-keyword">if</span> multi:
+                <span class="hljs-keyword">await</span> self._channel.basic_consume(callback=callback, queue_name=queue_name, no_ack=<span class="hljs-keyword">True</span>)
+                logger.info(<span class="hljs-string">&quot;multi message queue:&quot;</span>, queue_name, caller=self)
+            <span class="hljs-keyword">else</span>:
+                self._add_event_handler(event, callback)
+                <span class="hljs-keyword">await</span> self._channel.basic_consume(self._on_consume_event_msg, queue_name=queue_name)
+                logger.info(<span class="hljs-string">&quot;queue:&quot;</span>, queue_name, caller=self)
+
+
+    <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">_on_consume_event_msg</span><span class="hljs-params">(self, channel, body, envelope, properties)</span>:</span>
+        <span class="hljs-keyword">try</span>:
+            key = <span class="hljs-string">&quot;{exchange}:{routing_key}&quot;</span>.format(exchange=envelope.exchange_name, routing_key=envelope.routing_key)
+            funcs = self._event_handler[key]
+            <span class="hljs-keyword">for</span> func <span class="hljs-keyword">in</span> funcs:
+                SingleTask.run(func, channel, body, envelope, properties)
+        <span class="hljs-keyword">except</span>:
+            logger.error(<span class="hljs-string">&quot;event handle error! body:&quot;</span>, body, caller=self)
+            <span class="hljs-keyword">return</span>
+        <span class="hljs-keyword">finally</span>:
+            <span class="hljs-keyword">await</span> self._channel.basic_client_ack(delivery_tag=envelope.delivery_tag)  <span class="hljs-comment"># response ack</span>
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">_add_event_handler</span><span class="hljs-params">(self, event: Event, callback)</span>:</span>
+        key = <span class="hljs-string">&quot;{exchange}:{routing_key}&quot;</span>.format(exchange=event.exchange, routing_key=event.routing_key)
+        <span class="hljs-keyword">if</span> key <span class="hljs-keyword">in</span> self._event_handler:
+            self._event_handler[key].append(callback)
+        <span class="hljs-keyword">else</span>:
+            self._event_handler[key] = [callback]
+        logger.debug(<span class="hljs-string">&quot;event handlers:&quot;</span>, self._event_handler.keys(), caller=self)
+
+    <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">_check_connection</span><span class="hljs-params">(self, *args, **kwargs)</span>:</span>
+        <span class="hljs-keyword">if</span> self._connected <span class="hljs-keyword">and</span> self._channel <span class="hljs-keyword">and</span> self._channel.is_open:
+            <span class="hljs-keyword">return</span>
+        logger.error(<span class="hljs-string">&quot;CONNECTION LOSE! START RECONNECT RIGHT NOW!&quot;</span>, caller=self)
+        self._connected = <span class="hljs-keyword">False</span>
+        self._protocol = <span class="hljs-keyword">None</span>
+        self._channel = <span class="hljs-keyword">None</span>
+        self._event_handler = {}
+        SingleTask.run(self.connect, reconnect=<span class="hljs-keyword">True</span>)
+</code></pre>
+<p>&#x6211;&#x4EEC;&#x9996;&#x5148;&#x6765;&#x770B;&#x770B;Event_center&#x7C7B;&#x7EF4;&#x62A4;&#x7684;&#x5B57;&#x6BB5;&#x4EE5;&#x53CA;&#x5176;&#x6784;&#x9020;&#x5668;&#x6240;&#x5B8C;&#x6210;&#x7684;&#x5DE5;&#x4F5C;</p>
+<pre><code class="lang-python">                self._host = config.rabbitmq.get(<span class="hljs-string">&quot;host&quot;</span>, <span class="hljs-string">&quot;localhost&quot;</span>)
+        self._port = config.rabbitmq.get(<span class="hljs-string">&quot;port&quot;</span>, <span class="hljs-number">5672</span>)
+        self._username = config.rabbitmq.get(<span class="hljs-string">&quot;username&quot;</span>, <span class="hljs-string">&quot;guest&quot;</span>)
+        self._password = config.rabbitmq.get(<span class="hljs-string">&quot;password&quot;</span>, <span class="hljs-string">&quot;guest&quot;</span>)
+        self._protocol = <span class="hljs-keyword">None</span>
+        self._channel = <span class="hljs-keyword">None</span>  <span class="hljs-comment"># Connection channel.</span>
+        self._connected = <span class="hljs-keyword">False</span>  <span class="hljs-comment"># If connect success.</span>
+        self._subscribers = []  <span class="hljs-comment"># e.g. `[(event, callback, multi), ...]`</span>
+        self._event_handler = {}  <span class="hljs-comment"># e.g. `{&quot;exchange:routing_key&quot;: [callback_function, ...]}`</span>
+
+        <span class="hljs-comment"># Register a loop run task to check TCP connection&apos;s healthy.</span>
+        LoopRunTask.register(self._check_connection, <span class="hljs-number">10</span>)
+
+        <span class="hljs-comment"># Create MQ connection.</span>
+      asyncio.get_event_loop().run_until_complete(self.connect())
+</code></pre>
+<p>&#x9996;&#x5148;&#x4ECE;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x4E2D;&#x62FF;&#x5230;&#x4E86;rabbitmq&#x7684;host&#x548C;port&#xFF0C;&#x4EE5;&#x53CA;username&#x548C;password&#xFF0C;&#x8FD9;&#x4E9B;&#x5B57;&#x6BB5;&#x90FD;&#x662F;&#x6211;&#x4EEC;&#x5728;&#x8FDE;&#x63A5;rabbitmq&#x670D;&#x52A1;&#x65F6;&#x9700;&#x8981;&#x63D0;&#x4F9B;&#x7684;&#x53C2;&#x6570;&#xFF0C;protocol&#x548C;channel&#x662F;&#x6211;&#x4EEC;&#x5728;&#x8FDE;&#x63A5;&#x670D;&#x52A1;&#x5668;&#x6210;&#x529F;&#x4E4B;&#x540E;&#xFF0C;&#x8FD4;&#x56DE;&#x7684;&#x53EF;&#x64CD;&#x4F5C;&#x5BF9;&#x8C61;&#xFF0C;&#x9700;&#x8981;&#x7EF4;&#x62A4;&#x7528;&#x4E8E;&#x63D0;&#x4F9B;&#x7ED9;&#x540E;&#x9762;&#x7684;&#x64CD;&#x4F5C;&#x4F7F;&#x7528;&#x3002;subscribes&#x662F;&#x4E00;&#x4E2A;&#x4FDD;&#x5B58;&#x4E8B;&#x4EF6;&#x4E0E;callback&#x51FD;&#x6570;&#x6D88;&#x8D39;&#x5173;&#x7CFB;&#x7684;&#x5143;&#x7EC4;&#xFF0C;&#x8FD9;&#x4E2A;&#x5143;&#x7956;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;subscibe&#x51FD;&#x6570;&#x4E8B;&#x4EF6;&#x548C;callback&#x51FD;&#x6570;&#x5BF9;&#x8FDB;&#x884C;&#x6DFB;&#x52A0;&#xFF0C;&#x5728;multi&#x8868;&#x793A;&#x8BE5;callback&#x51FD;&#x6570;&#x662F;&#x5426;&#x8BA2;&#x9605;&#x4E86;&#x591A;&#x4E2A;&#x4EA4;&#x6613;&#x5BF9;&#x6216;&#x8005;&#x591A;&#x4E2A;&#x5E73;&#x53F0;&#xFF0C;&#x5728;&#x901A;&#x8FC7;aioamqp&#x8FDB;&#x884C;&#x7ED1;&#x5B9A;&#x6D88;&#x8D39;&#x65F6;&#xFF0C;&#x6211;&#x4EEC;&#x662F;&#x901A;&#x8FC7;subscribes&#x8FD9;&#x4E2A;&#x5143;&#x7EC4;&#x83B7;&#x53D6;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x7ED1;&#x5B9A;&#x7684;&#x961F;&#x5217;&#x548C;&#x4EE5;&#x53CA;&#x76F8;&#x5E94;callback&#x51FD;&#x6570;&#xFF0C;event_handler&#x662F;&#x4E00;&#x4E2A;&#x7EF4;&#x62A4;&#x4E00;&#x4E2A;&#x961F;&#x5217;&#x5B58;&#x5728;&#x591A;&#x4E2A;&#x6D88;&#x8D39;&#x8005;&#x5B57;&#x5178;&#xFF0C;exchange:routing_key&#x6307;&#x5B9A;&#x552F;&#x4E00;&#x961F;&#x5217;&#xFF0C;&#x540E;&#x9762;&#x7D27;&#x8DDF;&#x4E00;&#x4E2A;&#x5143;&#x7EC4;&#x4FDD;&#x5B58;&#x4E86;&#x8BE5;&#x961F;&#x5217;&#x6240;&#x6709;&#x7684;callback function&#x3002;</p>
+<p>&#x63A5;&#x4E0B;&#x6765;&#x6784;&#x9020;&#x5668;&#x6CE8;&#x518C;&#x4E86;&#x4E00;&#x4E2A;&#x5FAA;&#x73AF;&#x4EFB;&#x52A1;&#x6BCF;&#x9694;10&#x79D2;&#x68C0;&#x67E5;&#x4E0E;rabbitmq&#x670D;&#x52A1;&#x5668;&#x7684;&#x8FDE;&#x63A5;&#xFF0C;&#x6700;&#x540E;&#xFF0C;&#x6784;&#x9020;&#x5668;&#x53BB;&#x5C1D;&#x8BD5;&#x8FDE;&#x63A5;rabbitmq&#x670D;&#x52A1;&#x5668;&#x3002;</p>
+<pre><code class="lang-python"><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">connect</span><span class="hljs-params">(self, reconnect=False)</span>:</span>
+    <span class="hljs-string">&quot;&quot;&quot;Connect to RabbitMQ server and create default exchange.
+
+    Args:
+        reconnect: If this invoke is a re-connection ?
+    &quot;&quot;&quot;</span>
+    logger.info(<span class="hljs-string">&quot;host:&quot;</span>, self._host, <span class="hljs-string">&quot;port:&quot;</span>, self._port, caller=self)
+    <span class="hljs-keyword">if</span> self._connected:
+        <span class="hljs-keyword">return</span>
+
+    <span class="hljs-comment"># Create a connection.</span>
+    <span class="hljs-keyword">try</span>:
+        transport, protocol = <span class="hljs-keyword">await</span> aioamqp.connect(host=self._host, port=self._port, login=self._username,
+                                                    password=self._password, login_method=<span class="hljs-string">&quot;PLAIN&quot;</span>)
+    <span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> e:
+        logger.error(<span class="hljs-string">&quot;connection error:&quot;</span>, e, caller=self)
+        <span class="hljs-keyword">return</span>
+    <span class="hljs-keyword">finally</span>:
+        <span class="hljs-keyword">if</span> self._connected:
+            <span class="hljs-keyword">return</span>
+    channel = <span class="hljs-keyword">await</span> protocol.channel()
+    self._protocol = protocol
+    self._channel = channel
+    self._connected = <span class="hljs-keyword">True</span>
+    logger.info(<span class="hljs-string">&quot;Rabbitmq initialize success!&quot;</span>, caller=self)
+
+    <span class="hljs-comment"># Create default exchanges.</span>
+    exchanges = [<span class="hljs-string">&quot;Orderbook&quot;</span>, <span class="hljs-string">&quot;Kline&quot;</span>]
+    <span class="hljs-keyword">for</span> name <span class="hljs-keyword">in</span> exchanges:
+        <span class="hljs-keyword">await</span> self._channel.exchange_declare(exchange_name=name, type_name=<span class="hljs-string">&quot;fanout&quot;</span>)
+    logger.debug(<span class="hljs-string">&quot;create default exchanges success!&quot;</span>, caller=self)
+
+    <span class="hljs-keyword">if</span> reconnect:
+        self._bind_and_consume()
+    <span class="hljs-keyword">else</span>:
+        <span class="hljs-comment"># Maybe we should waiting for all modules to be initialized successfully.</span>
+        asyncio.get_event_loop().call_later(<span class="hljs-number">5</span>, self._bind_and_consume)
+</code></pre>
+<p>connect&#x51FD;&#x6570;&#x5B8C;&#x6210;&#x4E86;&#x4EE5;&#x4E0B;&#x51E0;&#x4EF6;&#x4E8B;&#xFF1A;</p>
+<pre><code class="lang-python">transport, protocol = <span class="hljs-keyword">await</span> aioamqp.connect(host=self._host, port=self._port, login=self._username,
+                                                    password=self._password, login_method=<span class="hljs-string">&quot;PLAIN&quot;</span>)
+</code></pre>
+<pre><code class="lang-python">channel = <span class="hljs-keyword">await</span> protocol.channel()
+</code></pre>
+<p>&#x62FF;&#x5230;protocol&#x548C;channel&#x5BF9;&#x8C61;&#xFF0C;&#x8868;&#x793A;&#x4E0E;rabbitmq&#x670D;&#x52A1;&#x5668;&#x8FDE;&#x63A5;&#x6210;&#x529F;&#xFF0C;&#x5E76;&#x4FDD;&#x5B58;&#x7EF4;&#x62A4;&#x4E24;&#x4E2A;&#x5BF9;&#x8C61;&#x3002;</p>
+<pre><code class="lang-python">        <span class="hljs-comment">#Create default exchanges.</span>
+        exchanges = [<span class="hljs-string">&quot;Orderbook&quot;</span>, <span class="hljs-string">&quot;Kline&quot;</span>&#xFF0C;<span class="hljs-string">&quot;trade&quot;</span>,]
+    <span class="hljs-keyword">for</span> name <span class="hljs-keyword">in</span> exchanges:
+        <span class="hljs-keyword">await</span>                                                     self._channel.exchange_declare(exchange_name=name, type_name=<span class="hljs-string">&quot;topic&quot;</span>)     
+    logger.debug(<span class="hljs-string">&quot;create default exchanges success!&quot;</span>, caller=self)
+</code></pre>
+<p>&#x521B;&#x5EFA;&#x9ED8;&#x8BA4;&#x7684;&#x4EA4;&#x6362;&#x673A;&#xFF0C;&#x9ED8;&#x8BA4;&#x7684;&#x4EA4;&#x6362;&#x673A;&#x6839;&#x636E;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x8FDB;&#x884C;&#x521B;&#x5EFA;&#xFF0C;&#x6709;orderbook&#x7C7B;&#x578B;&#xFF0C;kline&#x7C7B;&#x578B;&#xFF0C;trade&#x7C7B;&#x578B;&#x3002;</p>
+<pre><code class="lang-python"><span class="hljs-keyword">if</span> reconnect:
+        self._bind_and_consume()
+<span class="hljs-keyword">else</span>:
+        <span class="hljs-comment"># Maybe we should waiting for all modules to be initialized successfully.</span>
+        asyncio.get_event_loop().call_later(<span class="hljs-number">5</span>, self._bind_and_consume
+</code></pre>
+<p>&#x6700;&#x540E;&#x6211;&#x4EEC;&#x5728;5s&#x540E;&#x8FDB;&#x884C;callback&#x6D88;&#x606F;&#x961F;&#x5217;&#x7684;&#x6D88;&#x8D39;&#x7ED1;&#x5B9A;&#xFF0C;&#x5EF6;&#x8FDF;5s&#x7684;&#x539F;&#x56E0;&#x662F;&#xFF0C;&#x5F53;&#x6211;&#x4EEC;&#x542F;&#x52A8;aioquant&#x6846;&#x67B6;&#x65F6;&#xFF0C;AIOQuant&#x7C7B;&#x5728;&#x521D;&#x59CB;&#x5316;&#x65F6;&#x5C31;&#x521B;&#x5EFA;&#x4E86;&#x4E00;&#x4E2A;eventcenter&#x5BF9;&#x8C61;&#xFF0C;&#x6B64;&#x65F6;&#x6211;&#x4EEC;&#x65F6;&#x901A;&#x8FC7;subscribes&#x8FD9;&#x4E2A;&#x5143;&#x7EC4;&#x8FDB;&#x884C;&#x7ED1;&#x5B9A;&#xFF0C;&#x7531;&#x4E8E;&#x5728;&#x521D;&#x59CB;&#x5316;&#x65F6;&#x5C31;&#x8FDB;&#x884C;connect&#x64CD;&#x4F5C;&#xFF0C;subscribes&#x4E2D;&#x5E76;&#x6CA1;&#x6709;&#x6DFB;&#x52A0;&#x4EFB;&#x4F55;&#x4FE1;&#x606F;&#xFF0C;&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x7B49;&#x5F85;&#x4E00;&#x5C0F;&#x6BB5;&#x65F6;&#x95F4;&#xFF0C;&#x7B49;&#x7B56;&#x7565;&#x7684;callback&#x51FD;&#x6570;&#x4E0E;&#x5BF9;&#x5E94;event&#x6DFB;&#x52A0;&#x5230;subscribes&#x5143;&#x7EC4;&#x4E2D;&#xFF0C;&#x5982;&#x679C;&#x662F;reconnect&#x5F53;&#x7136;&#x5C31;&#x4E0D;&#x9700;&#x8981;&#x7B49;&#x5F85;&#x3002;</p>
+<pre><code class="lang-python"><span class="hljs-meta">@async_method_locker(&quot;EventCenter.subscribe&quot;)</span>
+<span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">subscribe</span><span class="hljs-params">(self, event: Event, callback=None, multi=False)</span>:</span>
+    <span class="hljs-string">&quot;&quot;&quot;Subscribe a event.
+
+    Args:
+        event: Event type.
+        callback: Asynchronous callback.
+        multi: If subscribe multiple channel(routing_key) ?
+    &quot;&quot;&quot;</span>
+    logger.info(<span class="hljs-string">&quot;NAME:&quot;</span>, event.name, <span class="hljs-string">&quot;EXCHANGE:&quot;</span>, event.exchange, <span class="hljs-string">&quot;QUEUE:&quot;</span>, event.queue, <span class="hljs-string">&quot;ROUTING_KEY:&quot;</span>,
+                event.routing_key, caller=self)
+    self._subscribers.append((event, callback, multi))
+
+<span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">publish</span><span class="hljs-params">(self, event)</span>:</span>
+    <span class="hljs-string">&quot;&quot;&quot;Publish a event.
+
+    Args:
+        event: A event to publish.
+    &quot;&quot;&quot;</span>
+    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> self._connected:
+        logger.warn(<span class="hljs-string">&quot;RabbitMQ not ready right now!&quot;</span>, caller=self)
+        <span class="hljs-keyword">return</span>
+    data = event.dumps()
+    <span class="hljs-keyword">await</span> self._channel.basic_publish(payload=data, exchange_name=event.exchange, routing_key=event.routing_key)
+</code></pre>
+<p>&#x63A5;&#x4E0B;&#x6765;&#x6211;&#x4EEC;&#x770B;&#x4E0B;&#x5728;&#x4E8B;&#x4EF6;&#x4E2D;&#x5FC3;&#x5982;&#x4F55;&#x8BA2;&#x9605;&#x548C;&#x53D1;&#x5E03;&#xFF0C;&#x8BA2;&#x9605;&#x8FC7;&#x7A0B;&#x975E;&#x5E38;&#x7B80;&#x5355;&#xFF0C;&#x5C06;event&#x548C;&#x5BF9;&#x5E94;&#x7684;&#x6D88;&#x8D39;&#x8005;callback&#x51FD;&#x6570;&#x6DFB;&#x52A0;&#x5230;subscribes&#x5143;&#x7EC4;&#x4E2D;&#xFF0C;&#x4E0D;&#x8FC7;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF0C;&#x8FD9;&#x91CC;&#x7528;&#x5230;&#x4E86;&#x5F02;&#x6B65;&#x9501;&#xFF0C;&#x56E0;&#x4E3A;&#x5728;&#x7A0B;&#x5E8F;&#x8FD0;&#x884C;&#x521D;&#x671F;&#x53EF;&#x80FD;&#x6709;&#x591A;&#x4E2A;event&#x548C;&#x5BF9;&#x5E94;callback&#x51FD;&#x6570;&#x540C;&#x65F6;&#x8BBF;&#x95EE;subscribes&#x5143;&#x7EC4;&#xFF0C;&#x9632;&#x6B62;&#x51FA;&#x9519;&#xFF0C;&#x8FD9;&#x91CC;&#x4F7F;&#x7528;&#x9501;&#x673A;&#x5236;&#xFF0C;&#x540C;&#x65F6;&#x53EA;&#x6709;&#x4E00;&#x4E2A;event&#x548C;&#x5BF9;&#x5E94;callback&#x80FD;&#x8BBF;&#x95EE;subscribes&#x5143;&#x7EC4;&#xFF0C;&#x8FDB;&#x884C;&#x6DFB;&#x52A0;&#x64CD;&#x4F5C;&#x3002;publish&#x51FD;&#x6570;&#x4E0D;&#x505A;&#x8FC7;&#x591A;&#x4ECB;&#x7ECD;&#xFF0C;&#x5B8C;&#x6210;&#x5BF9;&#x6570;&#x636E;&#x7684;&#x538B;&#x7F29;&#x7136;&#x540E;&#x6839;&#x636E;&#x4F20;&#x5165;&#x7684;event&#x7684;exchange&#x548C;routingkey&#x8FDB;&#x884C;&#x53D1;&#x5E03;&#x3002;</p>
+<p>&#x63A5;&#x4E0B;&#x6765;&#x6211;&#x4EEC;&#x6765;&#x770B;&#x5C06;event&#x548C;&#x5BF9;&#x5E94;&#x7684;callback&#x51FD;&#x6570;&#x52A0;&#x5165;subscribes&#x5143;&#x7EC4;&#x4E2D;&#x540E;&#xFF0C;&#x5982;&#x4F55;&#x4F7F;&#x7528;subscribes&#x4E2D;&#x7684;&#x6570;&#x636E;&#x5728;rabbitmq&#x4E2D;&#x8FDB;&#x884C;&#x7ED1;&#x5B9A;&#x6D88;&#x8D39;&#x64CD;&#x4F5C;&#x3002;</p>
+<pre><code class="lang-python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">_bind_and_consume</span><span class="hljs-params">(self)</span>:</span>
+    <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">do_them</span><span class="hljs-params">()</span>:</span>
+        <span class="hljs-keyword">for</span> event, callback, multi <span class="hljs-keyword">in</span> self._subscribers:
+            <span class="hljs-keyword">await</span> self._initialize(event, callback, multi)
+    SingleTask.run(do_them)
+
+<span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">_initialize</span><span class="hljs-params">(self, event: Event, callback=None, multi=False)</span>:</span>
+    <span class="hljs-keyword">if</span> event.queue:
+        <span class="hljs-keyword">await</span> self._channel.queue_declare(queue_name=event.queue, auto_delete=<span class="hljs-keyword">True</span>)
+        queue_name = event.queue
+    <span class="hljs-keyword">else</span>:
+        result = <span class="hljs-keyword">await</span> self._channel.queue_declare(exclusive=<span class="hljs-keyword">True</span>)
+        queue_name = result[<span class="hljs-string">&quot;queue&quot;</span>]
+    <span class="hljs-keyword">await</span> self._channel.queue_bind(queue_name=queue_name, exchange_name=event.exchange,
+                                   routing_key=event.routing_key)
+    <span class="hljs-keyword">await</span> self._channel.basic_qos(prefetch_count=event.prefetch_count)
+    <span class="hljs-keyword">if</span> callback:
+        <span class="hljs-keyword">if</span> multi:
+            <span class="hljs-keyword">await</span> self._channel.basic_consume(callback=callback, queue_name=queue_name, no_ack=<span class="hljs-keyword">True</span>)
+            logger.info(<span class="hljs-string">&quot;multi message queue:&quot;</span>, queue_name, caller=self)
+        <span class="hljs-keyword">else</span>:
+            self._add_event_handler(event, callback)
+            <span class="hljs-keyword">await</span> self._channel.basic_consume(self._on_consume_event_msg, queue_name=queue_name)
+            logger.info(<span class="hljs-string">&quot;queue:&quot;</span>, queue_name, caller=self)
+
+
+<span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">_on_consume_event_msg</span><span class="hljs-params">(self, channel, body, envelope, properties)</span>:</span>
+    <span class="hljs-keyword">try</span>:
+        key = <span class="hljs-string">&quot;{exchange}:{routing_key}&quot;</span>.format(exchange=envelope.exchange_name, routing_key=envelope.routing_key)
+        funcs = self._event_handler[key]
+        <span class="hljs-keyword">for</span> func <span class="hljs-keyword">in</span> funcs:
+            SingleTask.run(func, channel, body, envelope, properties)
+    <span class="hljs-keyword">except</span>:
+        logger.error(<span class="hljs-string">&quot;event handle error! body:&quot;</span>, body, caller=self)
+        <span class="hljs-keyword">return</span>
+    <span class="hljs-keyword">finally</span>:
+        <span class="hljs-keyword">await</span> self._channel.basic_client_ack(delivery_tag=envelope.delivery_tag)  <span class="hljs-comment"># response ack</span>
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">_add_event_handler</span><span class="hljs-params">(self, event: Event, callback)</span>:</span>
+    key = <span class="hljs-string">&quot;{exchange}:{routing_key}&quot;</span>.format(exchange=event.exchange, routing_key=event.routing_key)
+    <span class="hljs-keyword">if</span> key <span class="hljs-keyword">in</span> self._event_handler:
+        self._event_handler[key].append(callback)
+    <span class="hljs-keyword">else</span>:
+        self._event_handler[key] = [callback]
+    logger.debug(<span class="hljs-string">&quot;event handlers:&quot;</span>, self._event_handler.keys(), caller=self)
+</code></pre>
+<p>&#x5728;bind_consume&#x51FD;&#x6570;&#x4E2D;&#x5BF9;subscribes&#x5143;&#x7EC4;&#x4E2D;&#x7684;&#x6BCF;&#x4E2A;item&#x8FDB;&#x884C;initialize&#x64CD;&#x4F5C;&#xFF0C;&#x63A5;&#x4E0B;&#x6765;&#x6211;&#x4EEC;&#x770B;initialize&#x51FD;&#x6570;&#xFF0C;&#x5982;&#x679C;event&#x4E2D;&#x7684;queue&#x5B57;&#x6BB5;&#x503C;&#x4E0D;&#x4E3A;&#x7A7A;&#xFF0C;&#x5C31;&#x5728;rabbitmq&#x4E2D;&#x58F0;&#x660E;&#x4E00;&#x4E2A;event.queue&#x7684;&#x961F;&#x5217;&#xFF0C;&#x5982;&#x679C;event&#x4E2D;&#x7684;queue&#x5B57;&#x6BB5;&#x503C;&#x4E3A;&#x7A7A;&#xFF0C;&#x5C31;&#x58F0;&#x660E;&#x4E00;&#x4E2A;&#x9ED8;&#x8BA4;&#x7684;&#x961F;&#x5217;&#xFF0C;&#x968F;&#x540E;&#x6211;&#x4EEC;&#x58F0;&#x660E;&#x7684;&#x961F;&#x5217;&#x4E0E;event&#x4E2D;&#x7684;exchange&#x8FDB;&#x884C;&#x7ED1;&#x5B9A;&#xFF0C;&#x5E76;&#x8BBE;&#x5B9A;&#x6BCF;&#x6B21;&#x4ECE;&#x6D88;&#x606F;&#x961F;&#x5217;&#x4E2D;&#x53D6;&#x6570;&#x636E;&#x7684;&#x7C92;&#x5EA6;&#xFF0C;&#x9ED8;&#x8BA4;&#x4E3A;1&#x6BCF;&#x6B21;&#x53D6;&#x4E00;&#x4E2A;&#xFF0C;&#x968F;&#x540E;&#x6211;&#x4EEC;&#x6839;&#x636E;&#x8BE5;event&#x662F;&#x5426;&#x53EF;&#x80FD;&#x5B58;&#x5728;&#x6709;&#x591A;&#x4E2A;&#x6D88;&#x8D39;&#x8005;&#x7684;&#x60C5;&#x51B5;&#x9009;&#x62E9;&#x4F7F;&#x7528; &#x81EA;&#x8EAB;callback&#x51FD;&#x6570;&#x8FD8;&#x662F;&#x5C01;&#x88C5;&#x4E4B;&#x540E;&#x7684;_on_consume_event_msg&#x51FD;&#x6570;&#xFF0C;&#x5176;&#x4E2D; _on_consume_event_msg&#x51FD;&#x6570;&#x4F5C;&#x4E3A;rabbitmq&#x7684;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#xFF0C;&#x5728; _on_consume_event_msg&#x4E2D;&#x5C06;&#x5B57;&#x5178;event_handler&#x4E2D;&#x8BE5;&#x961F;&#x5217;&#x7684;&#x6240;&#x6709;callback&#x51FD;&#x6570;&#x4F9D;&#x6B21;&#x8C03;&#x7528;&#x521B;&#x5EFA;task&#xFF0C; _add_event_handler&#x5373;&#x5C06;&#x8BE5;&#x961F;&#x5217;&#x5BF9;&#x5E94;&#x7684;&#x4E00;&#x4E2A;callback&#x52A0;&#x5165;&#x5230;event_handler&#x8FD9;&#x4E2A;&#x5B57;&#x5178;&#x4E2D;&#x3002;</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="market.html" class="navigation navigation-prev " aria-label="Previous page: 第四节 market">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="tasks.html" class="navigation navigation-next " aria-label="Next page: 第六节 tasks">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"第五节 event","level":"1.3.5","depth":2,"next":{"title":"第六节 tasks","level":"1.3.6","depth":2,"path":"aioquant_interpreter/tasks.md","ref":"aioquant_interpreter/tasks.md","articles":[]},"previous":{"title":"第四节 market","level":"1.3.4","depth":2,"path":"aioquant_interpreter/market.md","ref":"aioquant_interpreter/market.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"aioquant_interpreter/event.md","mtime":"2021-06-30T06:56:15.137Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-06-30T07:08:31.661Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
